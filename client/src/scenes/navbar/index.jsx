@@ -1,5 +1,5 @@
 import { useState } from "react";
-import logo from "../Image/logo.png"
+// import logo from "../Image/logo.png"
 import {
   Box,
   IconButton,
@@ -45,9 +45,9 @@ const Navbar = () => {
   return (
     <FlexBetween padding="1rem 6%" backgroundColor={alt}>
       <FlexBetween gap="1.75rem">
-        <img style={{ width: "5%", borderRadius: "50%"}} src={logo} alt="logo" />
+       
         <Typography
-        marginRight="39.9rem"
+        // marginRight="39.9rem"
           fontWeight="bold"
           fontSize="clamp(1rem, 2rem, 2.25rem)"
           color="primary"
@@ -59,6 +59,7 @@ const Navbar = () => {
             },
           }}
         >
+           {/* <img style={{ width: "5%", borderRadius: "50%"}} src={logo} alt="logo" /> */}
           Friend's-Zone
         </Typography>
         {isNonMobileScreens && (
