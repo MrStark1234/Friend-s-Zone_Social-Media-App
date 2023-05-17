@@ -5,22 +5,6 @@ import User from "../models/User.js";
 /* REGISTER USER */
 export const register = async (req, res) => {
   try {
-    // Access the uploaded file from the request object
-    const file = req.file;
-    // Upload the file to Cloudinary
-    cloudinary.uploader.upload(file.path, function (error, result) {
-      if (error) {
-        // Handle the error
-        console.error(error);
-        return res.status(500).json({ message: "Failed to upload file" });
-      }
-
-      // Access the public URL of the uploaded file from Cloudinary
-      const imageUrl = result.secure_url;
-
-      // Continue with your registration logic, using the Cloudinary URL as needed
-      // ...
-    });
     const {
       firstName,
       lastName,
