@@ -17,6 +17,7 @@ import { verifyToken } from "./middleware/auth.js";
 import User from "./models/User.js";
 import Post from "./models/Post.js";
 import { users, posts } from "./data/index.js";
+const cloudinary = require("cloudinary").v2;
 
 /* CONFIGURATIONS */
 const __filename = fileURLToPath(import.meta.url);
@@ -33,14 +34,35 @@ app.use(cors());
 app.use("/assets", express.static(path.join(__dirname, "public/assets")));
 
 /* FILE STORAGE */
+// const storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, "public/assets");
+//   },
+//   filename: function (req, file, cb) {
+//     cb(null, file.originalname);
+//   },
+// });
+// const upload = multer({ storage });
+
+// /* ROUTES WITH FILES */
+// app.post("/auth/register", upload.single("picture"), register);
+// app.post("/posts", verifyToken, upload.single("picture"), createPost);
+
+cloudinary.config({
+  cloud_name: "dvgibllus",
+  api_key: "295728613173766",
+  api_secret: "gOWFSOKbCd3vNOgJKbJJL9QecDE",
+});
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "public/assets");
+    cb(null, "temp"); // Upload to a temporary folder on the local server
   },
   filename: function (req, file, cb) {
     cb(null, file.originalname);
   },
 });
+
 const upload = multer({ storage });
 
 /* ROUTES WITH FILES */
